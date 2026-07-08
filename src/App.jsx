@@ -43,9 +43,9 @@ const SocialLinks = () => (
   <div className="social-links-fixed">
     <div className="line"></div>
     <div className="socials">
-      <a href="#"><i className="fab fa-github"></i></a>
-      <a href="#"><i className="fab fa-dribbble"></i></a>
-      <a href="#"><i className="fab fa-figma"></i></a>
+      <a href="mailto:dakshee02@gmail.com"><i className="fas fa-envelope"></i></a>
+      <a href="#"><i className="fab fa-linkedin"></i></a>
+      <a href="https://github.com/Dakshinya-mohanRaj"><i className="fab fa-github"></i></a>
     </div>
   </div>
 );
@@ -179,10 +179,8 @@ const Skills = () => (
         <SkillItem icon="css3" name="css" color="#1572B6" />
         <SkillItem icon="js" name="js" color="#F7DF1E" />
         <SkillItem icon="react" name="react" color="#61DAFB" />
-        <SkillItem icon="node-js" name="node" color="#339933" />
         <SkillItem icon="figma" name="figma" color="#F24E1E" />
         <SkillItem icon="git-alt" name="git" color="#F05032" />
-        <SkillItem icon="database" name="mysql" color="#4479A1" />
         <SkillItem icon="code" name="firebase" color="#FFCA28" />
         <SkillItem icon="java" name="java" color="#007396" />
       </div>
@@ -258,7 +256,8 @@ const Footer = () => (
         <h3 className="mono">Media</h3>
         <div className="footer-socials">
           <a href="#"><i className="fab fa-github"></i></a>
-          <a href="#"><i className="fab fa-linkedin"></i></a>
+          <a href="#"><i className="fab fa-dribbble"></i></a>
+          <a href="#"><i className="fab fa-discord"></i></a>
         </div>
       </div>
     </div>
