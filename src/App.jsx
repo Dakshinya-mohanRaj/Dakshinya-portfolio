@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import heroImg from './assets/hero.png';
 
 const App = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div className="app">
-      <Navbar />
+    <div className={`app ${menuOpen ? 'menu-open' : ''}`}>
+      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <SocialLinks />
       <main className="container">
         <Hero />
@@ -20,19 +22,24 @@ const App = () => {
   );
 };
 
-const Navbar = () => (
+const Navbar = ({ menuOpen, setMenuOpen }) => (
   <header className="navbar">
     <div className="container nav-container">
       <div className="logo mono">
         <span className="purple">{"</>"}</span> Dakshinya MohanRaj
       </div>
-      <nav>
+      
+      <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        <i className={menuOpen ? "fas fa-times" : "fas fa-bars"}></i>
+      </div>
+
+      <nav className={`nav-menu ${menuOpen ? 'active' : ''}`}>
         <ul className="nav-links mono">
-          <li><a href="#home"><span className="purple">#</span>home</a></li>
-          <li><a href="#projects"><span className="purple">#</span>projects</a></li>
-          <li><a href="#skills"><span className="purple">#</span>skills</a></li>
-          <li><a href="#about"><span className="purple">#</span>about-me</a></li>
-          <li><a href="#contact"><span className="purple">#</span>contacts</a></li>
+          <li><a href="#home" onClick={() => setMenuOpen(false)}><span className="purple">#</span>home</a></li>
+          <li><a href="#projects" onClick={() => setMenuOpen(false)}><span className="purple">#</span>projects</a></li>
+          <li><a href="#skills" onClick={() => setMenuOpen(false)}><span className="purple">#</span>skills</a></li>
+          <li><a href="#about" onClick={() => setMenuOpen(false)}><span className="purple">#</span>about-me</a></li>
+          <li><a href="#contact" onClick={() => setMenuOpen(false)}><span className="purple">#</span>contacts</a></li>
         </ul>
       </nav>
     </div>
@@ -44,7 +51,7 @@ const SocialLinks = () => (
     <div className="line"></div>
     <div className="socials">
       <a href="mailto:dakshee02@gmail.com"><i className="fas fa-envelope"></i></a>
-      <a href="#"><i className="fab fa-linkedin"></i></a>
+      <a href="https://www.linkedin.com/in/dakshinya-mohan-raj-6a311732b/"><i className="fab fa-linkedin"></i></a>
       <a href="https://github.com/Dakshinya-mohanRaj"><i className="fab fa-github"></i></a>
     </div>
   </div>
@@ -255,9 +262,9 @@ const Footer = () => (
       <div className="footer-right">
         <h3 className="mono">Media</h3>
         <div className="footer-socials">
-          <a href="#"><i className="fab fa-github"></i></a>
-          <a href="#"><i className="fab fa-dribbble"></i></a>
-          <a href="#"><i className="fab fa-discord"></i></a>
+          <a href="mailto:dakshee02@gmail.com"><i className="fas fa-envelope"></i></a>
+          <a href="#"><i className="fab fa-linkedin"></i></a>
+          <a href="https://github.com/Dakshinya-mohanRaj"><i className="fab fa-github"></i></a>
         </div>
       </div>
     </div>
