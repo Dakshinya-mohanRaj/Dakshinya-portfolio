@@ -70,13 +70,6 @@ const Hero = () => (
     </div>
     <div className="hero-image">
       <div className="image-stack">
-        {/* Geometric Shape */}
-        <div className="geometric-shape">
-           <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-              <path fill="var(--main-color)" fillOpacity="0.1" stroke="var(--main-color)" strokeWidth="1" d="M 40,40 L 40,160 L 160,160 L 160,100 L 100,100 L 100,40 Z" />
-           </svg>
-        </div>
-
         {/* Left Dots */}
         <div className="dots-container dots-left-hero">
           {[...Array(9)].map((_, i) => <div key={i} className="dot"></div>)}
@@ -99,10 +92,6 @@ const Hero = () => (
         </div>
       </div>
       
-      <div className="status-box mono">
-        <div className="box"></div>
-        <span>Currently working on web development<span className="white"></span></span>
-      </div>
     </div>
   </section>
 );
@@ -119,8 +108,7 @@ const Quote = () => (
         <p>- Miss. Who</p>
       </div>
     </div>
-    {/* Floating Decorative Box */}
-    <div className="floating-box"></div>
+
   </div>
 );
 
