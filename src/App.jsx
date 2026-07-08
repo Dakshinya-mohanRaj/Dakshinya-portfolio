@@ -57,7 +57,7 @@ const Hero = () => (
         Hi, I'm a <span className="purple">web designer</span> and <span className="purple">front-end developer</span>
       </h1>
       <p className="hero-desc gray">
-        I'm currently into MERN, Frontend Dev, backend Dev
+        I'm currently into Frontend Dev
       </p>
       <button className="btn-outline mono">Scroll Down ↓</button>
     </div>
@@ -94,7 +94,7 @@ const Hero = () => (
       
       <div className="status-box mono">
         <div className="box"></div>
-        <span>Currently working on <span className="white">Portfolio</span></span>
+        <span>Currently working on <span className="white"></span></span>
       </div>
     </div>
   </section>
@@ -209,10 +209,10 @@ const About = () => (
       <div className="about-text">
         <p className="gray">Hello, i'm Dakshinya!</p>
         <p className="gray">
-          I'm a self-taught front-end developer based in Kyiv, Ukraine. I can develop responsive websites from scratch and raise them into modern user friendly web experiences.
+          I'm a self-taught front-end developer. I can develop responsive websites from scratch and raise them into modern user friendly web experiences.
         </p>
         <p className="gray">
-          I am an Information Technology With Business Informatics undergraduate from IIIT-A. I am very passionate about improving my coding skills & developing applications & websites.
+          I am a Computer Science Engineering Student Pursing 3rd year in K S R College. I am very passionate about improving my coding skills & developing applications & websites.
         </p>
         <button className="btn-outline mono">Resume ↓</button>
       </div>
@@ -238,7 +238,7 @@ const Contact = () => (
       <div className="contact-box-new">
         <p className="mono white">Message me here</p>
         <div className="contact-links gray">
-          <div className="link"><i className="fab fa-discord purple"></i> dakshinya#1234</div>
+          <div className="link"><i className="fab fa-discord purple"></i> d</div>
           <div className="link"><i className="fas fa-envelope purple"></i> dakshinya@gmail.com</div>
         </div>
       </div>
