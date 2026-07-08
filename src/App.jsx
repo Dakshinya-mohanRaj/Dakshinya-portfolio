@@ -109,7 +109,7 @@ const Quote = () => (
         <span className="quote-mark bottom">"</span>
       </div>
       <div className="quote-author">
-        <p>- Mr. Who</p>
+        <p>- Miss. Who</p>
       </div>
     </div>
     {/* Floating Decorative Box */}
