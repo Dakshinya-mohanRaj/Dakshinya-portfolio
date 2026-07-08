@@ -101,7 +101,7 @@ const Hero = () => (
       
       <div className="status-box mono">
         <div className="box"></div>
-        <span>Currently working on <span className="white"></span></span>
+        <span>Currently working on web development<span className="white"></span></span>
       </div>
     </div>
   </section>
@@ -205,7 +205,7 @@ const Skills = () => (
   );
 
 const About = () => (
-  <section id="#about" className="about">
+  <section id="about" className="about">
     <div className="section-header">
       <h2 className="mono"><span className="purple">#</span>about-me</h2>
       <div className="line"></div>
@@ -242,8 +242,10 @@ const Contact = () => (
       </div>
       <div className="contact-box-new">
         <p className="mono white">Message me here</p>
-        <div className="contact-links gray">
-          <div className="link"><i className="fas fa-envelope purple"></i> dakshee02@gmail.com</div>
+        <div className="contact-socials">
+          <a href="mailto:dakshee02@gmail.com"><i className="fas fa-envelope"></i></a>
+          <a href="https://www.linkedin.com/in/dakshinya-mohan-raj-6a311732b/" target="_blank" rel="noreferrer"><i className="fab fa-linkedin"></i></a>
+          <a href="https://github.com/Dakshinya-mohanRaj" target="_blank" rel="noreferrer"><i className="fab fa-github"></i></a>
         </div>
       </div>
     </div>
@@ -258,14 +260,6 @@ const Footer = () => (
           <span className="purple">{"</>"}</span> Dakshinya <span className="gray">dakshee02@gmail.com</span>
         </div>
         <p>Web designer and front-end developer</p>
-      </div>
-      <div className="footer-right">
-        <h3 className="mono">Media</h3>
-        <div className="footer-socials">
-          <a href="mailto:dakshee02@gmail.com"><i className="fas fa-envelope"></i></a>
-          <a href="#"><i className="fab fa-linkedin"></i></a>
-          <a href="https://github.com/Dakshinya-mohanRaj"><i className="fab fa-github"></i></a>
-        </div>
       </div>
     </div>
     <div className="footer-bottom">
