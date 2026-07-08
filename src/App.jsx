@@ -238,8 +238,7 @@ const Contact = () => (
       <div className="contact-box-new">
         <p className="mono white">Message me here</p>
         <div className="contact-links gray">
-          <div className="link"><i className="fab fa-discord purple"></i> d</div>
-          <div className="link"><i className="fas fa-envelope purple"></i> dakshinya@gmail.com</div>
+          <div className="link"><i className="fas fa-envelope purple"></i> dakshee02@gmail.com</div>
         </div>
       </div>
     </div>
@@ -251,7 +250,7 @@ const Footer = () => (
     <div className="container footer-container">
       <div className="footer-left">
         <div className="logo mono">
-          <span className="purple">{"</>"}</span> Dakshinya <span className="gray">dakshinya@gmail.com</span>
+          <span className="purple">{"</>"}</span> Dakshinya <span className="gray">dakshee02@gmail.com</span>
         </div>
         <p>Web designer and front-end developer</p>
       </div>
@@ -259,13 +258,12 @@ const Footer = () => (
         <h3 className="mono">Media</h3>
         <div className="footer-socials">
           <a href="#"><i className="fab fa-github"></i></a>
-          <a href="#"><i className="fab fa-dribbble"></i></a>
-          <a href="#"><i className="fab fa-discord"></i></a>
+          <a href="#"><i className="fab fa-linkedin"></i></a>
         </div>
       </div>
     </div>
     <div className="footer-bottom">
-      <p className="gray">© Copyright 2024. Made by Dakshinya</p>
+      <p className="gray">© Copyright 2026. Made by Dakshinya MohanRaj</p>
     </div>
   </footer>
 );
