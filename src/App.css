@@ -1,6 +1,23 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Offset for fixed navbar */
+}
+
 .app {
   position: relative;
   overflow-x: hidden;
+  padding-top: 80px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(171, 178, 191, 0.1);
 }
 
 .nav-container {
@@ -12,7 +29,19 @@
 
 .nav-links {
   display: flex;
-  gap: 42px;
+  gap: 32px;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.nav-links a {
+  cursor: pointer;
+  transition: var(--transition);
 }
 
 .nav-links a:hover {
@@ -37,12 +66,17 @@
   background-color: var(--secondary-color);
 }
 
-.socials {
+.socials a {
+  cursor: pointer;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 20px;
-  color: var(--secondary-color);
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.socials a:hover {
+  color: var(--main-color);
+  transform: scale(1.2);
 }
 
 /* Hero Section */
@@ -69,7 +103,7 @@
 
 .hero-image {
   position: relative;
-  width: 470px;
+  width: 380px;
 }
 
 .image-stack {
@@ -273,8 +307,10 @@
 /* Skills Grid New */
 .skills-grid-new {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .skill-item {
@@ -284,17 +320,27 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  transition: var(--transition);
+  gap: 12px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .skill-item:hover {
   border-color: var(--main-color);
-  background: rgba(198, 120, 221, 0.05);
+  background: rgba(198, 120, 221, 0.1);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(198, 120, 221, 0.15);
+}
+
+.skill-item:hover .skill-icon-container {
+  transform: scale(1.1);
+  color: var(--white);
 }
 
 .skill-icon-container {
-  font-size: 32px;
+  font-size: 36px;
+  transition: transform 0.3s ease;
 }
 
 .skill-name {
@@ -334,20 +380,31 @@
 .contact-box-new {
   border: 1px solid var(--secondary-color);
   padding: 24px;
-  min-width: 300px;
-}
-
-.contact-links {
-  margin-top: 16px;
+  min-width: 250px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  align-items: center; /* Center content horizontally */
+  text-align: center;
 }
 
-.contact-links .link {
+.contact-socials {
+  margin-top: 16px;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 24px;
+  font-size: 28px; /* Slightly larger for better interaction */
+}
+
+.contact-socials a {
+  color: var(--secondary-color);
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.contact-socials a:hover {
+  color: var(--main-color);
+  transform: translateY(-5px) scale(1.1);
+  filter: drop-shadow(0 0 10px var(--main-color));
 }
 
 /* Footer */
@@ -359,7 +416,8 @@
 
 .footer-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Centered for cleaner look since media is moved */
+  text-align: center;
   margin-bottom: 40px;
 }
 
@@ -406,26 +464,38 @@
 
   .hero-image {
     width: 100%;
-    max-width: 350px;
+    max-width: 250px;
   }
 
-  .social-links-fixed {
-    display: none;
+  /* Hamburger Styles */
+  .hamburger {
+    display: block;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .nav-menu.active {
+    right: 0;
   }
 
   .nav-links {
-    gap: 20px;
-    font-size: 14px;
-  }
-
-  .navbar {
-    height: auto;
-    padding: 20px 0;
-  }
-
-  .nav-container {
     flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    gap: 40px;
+    font-size: 24px;
   }
 
   .about-content, .contact-content {
