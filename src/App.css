@@ -84,7 +84,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 85vh;
+  min-height: 70vh; /* Reduced to help fit everything on one screen */
 }
 
 .hero-content {
@@ -94,11 +94,34 @@ html {
 .hero-title {
   font-size: 32px;
   margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
 }
 
 .hero-desc {
   margin-bottom: 32px;
   font-size: 18px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+}
+
+/* Staggered entrance for the hero button */
+.hero-content .btn-outline {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.6s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 .hero-image {
@@ -111,46 +134,57 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: float 6s ease-in-out infinite;
 }
 
-.geometric-shape {
-  position: absolute;
-  top: -20px;
-  left: 20px;
-  width: 150px;
-  height: 150px;
-  z-index: 1;
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
 }
 
 .image-wrapper-hero {
   position: relative;
   z-index: 2;
   width: 100%;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(45deg, var(--main-color), transparent, var(--main-color));
+  background-size: 200% 200%;
+  animation: gradientFlow 4s ease infinite;
+  display: flex;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .image-wrapper-hero img {
   width: 100%;
-  border-bottom: 1px solid var(--main-color);
-  border-radius: 20px;
+  border-radius: 18px;
+  background: var(--bg-color);
+  transition: transform 0.3s ease;
+}
+
+.image-wrapper-hero:hover img {
+  transform: scale(1.02);
+}
+
+.status-box:empty {
+  display: none;
 }
 
 .status-box {
   display: flex;
   align-items: center;
   gap: 10px;
-  border: 1px solid var(--secondary-color);
-  background: var(--bg-color);
-  padding: 8px;
-  margin-top: -10px;
+  background: rgba(171, 178, 191, 0.05);
+  padding: 8px 16px;
+  margin-top: 10px;
   position: relative;
   z-index: 3;
-  border-radius: 8px;
-}
-
-.status-box .box {
-  width: 16px;
-  height: 16px;
-  background: var(--main-color);
+  border-radius: 4px;
 }
 
 /* Dots Styling */
@@ -184,7 +218,7 @@ html {
 .quote-section {
   display: flex;
   justify-content: center;
-  margin: 100px 0;
+  margin: 20px 0 60px; /* Reduced gap further */
   position: relative;
 }
 
@@ -199,28 +233,31 @@ html {
   border: 1px solid var(--secondary-color);
   padding: 32px;
   position: relative;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .quote-text {
-  font-size: 24px;
+  font-size: 20px; /* Slightly smaller for better proportions */
   font-weight: 500;
-  max-width: 700px;
+  max-width: 600px;
+  line-height: 1.6;
 }
 
 .quote-mark {
   position: absolute;
   background: var(--bg-color);
-  font-size: 48px;
-  width: 40px;
-  height: 40px;
+  font-size: 32px; /* Adjusted size */
+  width: 32px;
+  height: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--white);
 }
 
-.quote-mark.top { top: -20px; left: 10px; }
-.quote-mark.bottom { bottom: -20px; right: 10px; }
+.quote-mark.top { top: -12px; left: 10px; }
+.quote-mark.bottom { bottom: -12px; right: 10px; }
 
 .quote-author {
   border: 1px solid var(--secondary-color);
