@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --bg-color: #000000;
+  --bg-color: #0a0a0a;
   --main-color: #8b38a4;
   --secondary-color: #ABB2BF;
   --text-color: #ABB2BF;
@@ -9,7 +9,6 @@
   --gray: #ABB2BF;
   --font-mono: 'Fira Code', monospace;
   --font-sans: 'Inter', sans-serif;
-  --border-color: #ABB2BF;
   --transition: all 0.2s ease-in-out;
 }
 
@@ -25,6 +24,8 @@ body {
   font-family: var(--font-sans);
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -42,12 +43,13 @@ button {
   border: none;
   background: none;
   font-family: var(--font-mono);
+  color: var(--white);
 }
 
 .container {
-  max-width: 1140px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
 h1, h2, h3, h4, .mono {
@@ -63,17 +65,23 @@ h1, h2, h3, h4, .mono {
 }
 
 section {
-  padding: 60px 0;
+  padding: 0;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+::selection {
+  background: rgba(139, 56, 164, 0.3);
+  color: var(--white);
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
 ::-webkit-scrollbar-track {
   background: var(--bg-color);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--main-color);
-  border-radius: 10px;
+  border-radius: 3px;
 }
