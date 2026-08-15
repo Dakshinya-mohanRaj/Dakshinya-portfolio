@@ -74,11 +74,6 @@
 ### 📊 GitHub Stats &amp; Contributions
 
 <div align="center">
-  <!-- Contribution Snake Grid Animation -->
-  <img src="./github-contribution-grid-snake-dark.svg" alt="GitHub Contribution Grid Snake" width="100%" />
-  
-  <br /><br />
-  
   <!-- Streak Stats Card -->
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=Dakshinya-mohanRaj&amp;theme=dark&amp;stroke=1f2430&amp;background=0d1117&amp;fire=C778DD&amp;ring=C778DD&amp;currStreakNum=61AFEF&amp;currStreakLabel=ABB2BF" alt="Dakshinya's GitHub Streak" />
 </div>
