@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 320" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0c10" />
+      <stop offset="100%" stop-color="#141923" />
+    </linearGradient>
+
+    <!-- Accent Border Gradient -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C778DD" stop-opacity="0.8" />
+      <stop offset="30%" stop-color="#61AFEF" stop-opacity="0.3" />
+      <stop offset="70%" stop-color="#C778DD" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#C778DD" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- Logo/Accent Gradient -->
+    <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C778DD" />
+      <stop offset="100%" stop-color="#61AFEF" />
+    </linearGradient>
+
+    <!-- Dot Grid Pattern -->
+    <pattern id="dotGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#abb2bf" fill-opacity="0.08" />
+    </pattern>
+
+    <!-- Soft Glow Filter -->
+    <filter id="glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Neon Glow Filter -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur1" />
+      <feGaussianBlur stdDeviation="8" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&amp;family=Inter:wght@400;600;800&amp;display=swap');
+    
+    .font-sans { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    .font-mono { font-family: 'Fira Code', monospace; }
+    
+    /* Animation keyframes */
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes steam {
+      0% { transform: translateY(0) scaleX(1); opacity: 0; }
+      15% { opacity: 0.8; }
+      50% { transform: translateY(-8px) scaleX(1.1); opacity: 0.6; }
+      100% { transform: translateY(-20px) scaleX(0.8); opacity: 0; }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(3deg); }
+    }
+    
+    @keyframes screenGlow {
+      0%, 100% { filter: drop-shadow(0 0 4px rgba(97, 175, 239, 0.3)); }
+      50% { filter: drop-shadow(0 0 10px rgba(97, 175, 239, 0.6)); }
+    }
+
+    .cursor { animation: cursorBlink 1s infinite; fill: #C778DD; }
+    .float-item { animation: float 6s ease-in-out infinite; }
+    .steam-1 { animation: steam 3.5s ease-in-out infinite; transform-origin: 770px 150px; }
+    .steam-2 { animation: steam 3.5s ease-in-out infinite 1.7s; transform-origin: 778px 150px; }
+    .laptop-glow { animation: screenGlow 4s ease-in-out infinite; }
+    
+    /* Typography classes */
+    .code-key { fill: #E06C75; }
+    .code-string { fill: #98C379; }
+    .code-syntax { fill: #ABB2BF; }
+    .code-number { fill: #D19A66; }
+    .terminal-header-text { fill: #5c6370; font-size: 11px; letter-spacing: 0.5px; }
+  </style>
+
+  <!-- Outer Card Background -->
+  <rect width="850" height="320" rx="12" fill="url(#bgGrad)" />
+  <rect width="850" height="320" rx="12" fill="url(#dotGrid)" />
+
+  <!-- Outer Glowing Accent Border -->
+  <rect x="1" y="1" width="848" height="318" rx="11" fill="none" stroke="url(#borderGrad)" stroke-width="1.5" />
+
+  <!-- Terminal Window Shell (Left Side) -->
+  <g transform="translate(25, 25)">
+    <!-- Terminal Body Background -->
+    <rect width="500" height="270" rx="8" fill="#0d1017" fill-opacity="0.85" stroke="#1f2430" stroke-width="1" />
+    
+    <!-- Terminal Header Bar -->
+    <path d="M 0,8 A 8,8 0 0,1 8,0 L 492,0 A 8,8 0 0,1 500,8 L 500,28 L 0,28 Z" fill="#161b22" />
+    
+    <!-- Window Control Buttons -->
+    <circle cx="16" cy="14" r="5" fill="#FF5F56" />
+    <circle cx="32" cy="14" r="5" fill="#FFBD2E" />
+    <circle cx="48" cy="14" r="5" fill="#27C93F" />
+    
+    <!-- Terminal Title -->
+    <text x="250" y="18" text-anchor="middle" class="font-mono terminal-header-text">dakshinya@terminal:~ (zsh)</text>
+
+    <!-- Terminal Content (CLI intro) -->
+    <g transform="translate(20, 52)" class="font-mono" font-size="13" letter-spacing="-0.2">
+      <!-- CLI Prompt Command -->
+      <text x="0" y="0" fill="#98C379">guest@dakshinya.dev <tspan fill="#ABB2BF">❯</tspan> <tspan fill="#61AFEF">curl</tspan> <tspan fill="#d19a66">-s</tspan> api.dakshinya.dev/intro</text>
+      
+      <!-- JSON Response -->
+      <g transform="translate(0, 24)" font-weight="500">
+        <text x="0" y="0" class="code-syntax">{</text>
+        <text x="18" y="20"><tspan class="code-key">"name"</tspan><tspan class="code-syntax">: </tspan><tspan class="code-string">"Dakshinya MohanRaj"</tspan><tspan class="code-syntax">,</tspan></text>
+        <text x="18" y="40"><tspan class="code-key">"role"</tspan><tspan class="code-syntax">: </tspan><tspan class="code-string">"Full Stack Developer"</tspan><tspan class="code-syntax">,</tspan></text>
+        <text x="18" y="60"><tspan class="code-key">"college"</tspan><tspan class="code-syntax">: </tspan><tspan class="code-string">"K S R College (3rd Year)"</tspan><tspan class="code-syntax">,</tspan></text>
+        <text x="18" y="80"><tspan class="code-key">"focus"</tspan><tspan class="code-syntax">: </tspan><tspan class="code-syntax">[</tspan><tspan class="code-string">"React"</tspan><tspan class="code-syntax">, </tspan><tspan class="code-string">"Node.js"</tspan><tspan class="code-syntax">, </tspan><tspan class="code-string">"Cloud"</tspan><tspan class="code-syntax">]</tspan><tspan class="code-syntax">,</tspan></text>
+        <text x="18" y="100"><tspan class="code-key">"status"</tspan><tspan class="code-syntax">: </tspan><tspan class="code-string">"Open to work"</tspan><tspan class="code-syntax">,</tspan></text>
+        <text x="18" y="120"><tspan class="code-key">"coffee"</tspan><tspan class="code-syntax">: </tspan><tspan class="code-number">100</tspan></text>
+        <text x="0" y="140" class="code-syntax">}</text>
+      </g>
+
+      <!-- Next Terminal Prompt -->
+      <g transform="translate(0, 190)">
+        <text x="0" y="0" fill="#98C379">guest@dakshinya.dev <tspan fill="#ABB2BF">❯</tspan> <tspan fill="#ABB2BF">_</tspan></text>
+        <rect x="166" y="-12" width="8" height="15" class="cursor" />
+      </g>
+    </g>
+  </g>
+
+  <!-- Right Decorative Element: Developer Setup Illustration (Laptop + Coffee) -->
+  <g transform="translate(40, 10)">
+    <!-- Ambient back-glow behind laptop -->
+    <circle cx="670" cy="150" r="70" fill="#61AFEF" fill-opacity="0.08" filter="url(#glow)" />
+    <circle cx="770" cy="170" r="45" fill="#C778DD" fill-opacity="0.08" filter="url(#glow)" />
+
+    <!-- Table Top Line -->
+    <line x1="550" y1="210" x2="800" y2="210" stroke="#21262d" stroke-width="3" stroke-linecap="round" />
+
+    <!-- Coffee Mug Shadow -->
+    <ellipse cx="770" cy="210" rx="14" ry="4" fill="#000000" fill-opacity="0.5" />
+
+    <!-- Laptop Shadow -->
+    <ellipse cx="665" cy="211" rx="80" ry="5" fill="#000000" fill-opacity="0.5" />
+
+    <!-- The Coffee Mug -->
+    <g>
+      <!-- Mug Body -->
+      <path d="M 755,175 L 785,175 A 1.5,1.5 0 0,1 786.5,176.5 L 783.5,204 A 6,6 0 0,1 777.5,210 L 762.5,210 A 6,6 0 0,1 756.5,204 L 753.5,176.5 A 1.5,1.5 0 0,1 755,175 Z" 
+            fill="#C778DD" stroke="#ffffff" stroke-width="1.5" />
+      <!-- Mug Handle -->
+      <path d="M 784,182 C 794,182 794,198 782.5,198" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+      
+      <!-- Steaming waves rising from coffee -->
+      <path class="steam-1" d="M 764,166 Q 762,156 766,148 T 764,136" fill="none" stroke="#61AFEF" stroke-width="1.5" stroke-linecap="round" />
+      <path class="steam-2" d="M 774,168 Q 776,158 772,150 T 774,138" fill="none" stroke="#61AFEF" stroke-width="1.5" stroke-linecap="round" />
+    </g>
+
+    <!-- The Macbook Laptop -->
+    <g class="laptop-glow">
+      <!-- Laptop Screen Shell (Space Gray Lid) -->
+      <rect x="600" y="105" width="130" height="85" rx="6" fill="#282c34" stroke="#4b5263" stroke-width="1.5" />
+      <!-- Inner Screen (Display Panel) -->
+      <rect x="606" y="110" width="118" height="73" rx="2" fill="#0c1015" />
+      
+      <!-- Mock Code Lines on Screen -->
+      <g transform="translate(612, 116)">
+        <line x1="5" y1="8" x2="35" y2="8" stroke="#E06C75" stroke-width="3" stroke-linecap="round" />
+        <line x1="5" y1="17" x2="65" y2="17" stroke="#98C379" stroke-width="3" stroke-linecap="round" />
+        <line x1="5" y1="26" x2="45" y2="26" stroke="#61AFEF" stroke-width="3" stroke-linecap="round" />
+        <line x1="5" y1="35" x2="80" y2="35" stroke="#D19A66" stroke-width="3" stroke-linecap="round" />
+        <line x1="15" y1="44" x2="55" y2="44" stroke="#C778DD" stroke-width="3" stroke-linecap="round" />
+        <line x1="15" y1="53" x2="70" y2="53" stroke="#56B6C2" stroke-width="3" stroke-linecap="round" />
+        <line x1="15" y1="62" x2="40" y2="62" stroke="#ABB2BF" stroke-width="3" stroke-linecap="round" />
+        <!-- Micro Cursor -->
+        <rect x="43" y="58" width="4" height="7" fill="#61AFEF" class="cursor" />
+      </g>
+
+      <!-- Laptop Base Hinge -->
+      <rect x="645" y="187" width="40" height="4" rx="1" fill="#1e222b" />
+      
+      <!-- Laptop Bottom Base (Keyboard Deck) -->
+      <polygon points="590,190 740,190 750,205 580,205" fill="#21252b" stroke="#4b5263" stroke-width="1" />
+      <!-- Base Lip/Profile Shadow -->
+      <polygon points="580,205 750,205 746,208 584,208" fill="#1e222b" />
+      <!-- Trackpad -->
+      <rect x="650" y="196" width="30" height="5" rx="1.5" fill="#1e222a" />
+    </g>
+
+    <!-- Floating Developer Accents -->
+    <!-- Curly Braces -->
+    <text class="font-mono float-item" x="555" y="105" fill="#C778DD" font-size="20" font-weight="700" opacity="0.8">{</text>
+    <text class="font-mono float-item" x="785" y="125" fill="#61AFEF" font-size="20" font-weight="700" opacity="0.8">}</text>
+
+    <!-- Code Tags -->
+    <text class="font-mono float-item" x="545" y="155" fill="#61AFEF" font-size="14" font-weight="700" opacity="0.7">&lt;/&gt;</text>
+    <text class="font-mono float-item" x="740" y="90" fill="#98C379" font-size="12" font-weight="700" opacity="0.6">&lt;dev&gt;</text>
+
+    <!-- Binary Digits -->
+    <text class="font-mono float-item" x="715" y="85" fill="#5c6370" font-size="10" opacity="0.5">1</text>
+    <text class="font-mono float-item" x="590" y="180" fill="#5c6370" font-size="10" opacity="0.5">0</text>
+    <text class="font-mono float-item" x="795" y="200" fill="#5c6370" font-size="10" opacity="0.5">1</text>
+  </g>
+</svg>
