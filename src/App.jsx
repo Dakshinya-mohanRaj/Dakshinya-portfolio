@@ -135,7 +135,7 @@ const Hero = () => (
             alt="Dakshinya"
             draggable="false"
             onError={(e) => {
-              e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop";
+              e.target.src = "/hero.png";
             }}
           />
         </div>
@@ -160,11 +160,11 @@ const Quote = () => (
 const Projects = () => {
   const projects = [
     {
-      img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop",
-      tech: ["HTML", "CSS", "JS", "Node.js", "MySQL"],
-      title: "IIITApfolio",
-      desc: "Academic & Non-Academic portfolio system for IIIT-A students",
-      live: "#",
+      img: "https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=600&auto=format&fit=crop",
+      tech: ["HTML", "CSS", "JavaScript", "Vercel"],
+      title: "Nail Glam",
+      desc: "Luxury nail products & beauty e-commerce platform with interactive shopping portal",
+      live: "https://nail-glam-e-commerce-website.vercel.app/",
     },
     {
       img: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=600&auto=format&fit=crop",
@@ -207,7 +207,12 @@ const Projects = () => {
                 </div>
                 <h3 className="project-title">{p.title}</h3>
                 <p className="project-desc gray">{p.desc}</p>
-                <a href={p.live} className="project-link mono">
+                <a
+                  href={p.live}
+                  className="project-link mono"
+                  target={p.live.startsWith('http') ? "_blank" : "_self"}
+                  rel={p.live.startsWith('http') ? "noreferrer" : undefined}
+                >
                   Live Demo <i className="fas fa-arrow-right"></i>
                 </a>
               </div>
