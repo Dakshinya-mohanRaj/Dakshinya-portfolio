@@ -168,10 +168,10 @@ const Projects = () => {
     },
     {
       img: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=600&auto=format&fit=crop",
-      tech: ["React", "AWS S3", "Express", "MongoDB"],
-      title: "ProjectX",
-      desc: "Cloud-based file sharing web app powered by AWS S3 buckets",
-      live: "#",
+      tech: ["React", "Express", "MongoDB", "JWT Auth"],
+      title: "Staff Task Scheduling Portal",
+      desc: "Role-based staff portal for assigning, tracking and managing team tasks and schedules",
+      live: "https://staff-task-scheduling-portal.vercel.app/",
     },
     {
       img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop",
