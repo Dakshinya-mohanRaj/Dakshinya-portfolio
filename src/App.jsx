@@ -225,34 +225,66 @@ const Projects = () => {
 };
 
 const Skills = () => {
-  const skills = [
-    { icon: "fab fa-html5", name: "HTML", color: "#E34F26" },
-    { icon: "fab fa-css3-alt", name: "CSS", color: "#1572B6" },
-    { icon: "fab fa-js", name: "JavaScript", color: "#F7DF1E" },
-    { icon: "fas fa-code", name: "TypeScript", color: "#3178C6" },
-    { icon: "fab fa-react", name: "React", color: "#61DAFB" },
-    { icon: "fab fa-nextjs", name: "Next.js", color: "#FFFFFF" },
-    { icon: "fab fa-node-js", name: "Node.js", color: "#5FA04E" },
-    { icon: "fab fa-python", name: "Python", color: "#3776AB" },
-    { icon: "fas fa-gauge-high", name: "FastAPI", color: "#009688" },
-    { icon: "fas fa-database", name: "PostgreSQL", color: "#4169E1" },
-    { icon: "fas fa-bolt", name: "Neon", color: "#00E599" },
-    { icon: "fas fa-key", name: "JWT Auth", color: "#D63AFF" },
-    { icon: "fas fa-brain", name: "RAG", color: "#FF6B6B" },
-    { icon: "fas fa-wind", name: "Tailwind", color: "#06B6D4" },
-    { icon: "fas fa-code", name: "Firebase", color: "#FFCA28" },
-    { icon: "fas fa-cubes", name: "Supabase", color: "#3ECF8E" },
-    { icon: "fab fa-git-alt", name: "Git", color: "#F05032" },
-    { icon: "fab fa-java", name: "Java", color: "#007396" },
-    { icon: "fab fa-figma", name: "Figma", color: "#F24E1E" },
+  const skillList = [
+    { icon: "fab fa-html5", name: "HTML", color: "#E34F26", cat: "dev" },
+    { icon: "fab fa-css3-alt", name: "CSS", color: "#1572B6", cat: "dev" },
+    { icon: "fab fa-js", name: "JavaScript", color: "#F7DF1E", cat: "dev" },
+    { icon: "fas fa-code", name: "TypeScript", color: "#3178C6", cat: "dev" },
+    { icon: "fab fa-react", name: "React", color: "#61DAFB", cat: "dev" },
+    { icon: "fab fa-nextjs", name: "Next.js", color: "#FFFFFF", cat: "dev" },
+    { icon: "fab fa-node-js", name: "Node.js", color: "#5FA04E", cat: "dev" },
+    { icon: "fab fa-java", name: "Java", color: "#007396", cat: "dev" },
+    { icon: "fab fa-python", name: "Python", color: "#3776AB", cat: "dev" },
+    { icon: "fas fa-gauge-high", name: "FastAPI", color: "#009688", cat: "dev" },
+    { icon: "fab fa-git-alt", name: "Git", color: "#F05032", cat: "dev" },
+    { icon: "fas fa-key", name: "JWT Auth", color: "#D63AFF", cat: "dev" },
+    { icon: "fab fa-figma", name: "Figma", color: "#F24E1E", cat: "design" },
+    { icon: "fas fa-wind", name: "Tailwind", color: "#06B6D4", cat: "design" },
+    { icon: "fas fa-database", name: "PostgreSQL", color: "#4169E1", cat: "db" },
+    { icon: "fas fa-bolt", name: "Neon", color: "#00E599", cat: "db" },
+    { icon: "fas fa-cubes", name: "Supabase", color: "#3ECF8E", cat: "db" },
+    { icon: "fas fa-code", name: "Firebase", color: "#FFCA28", cat: "db" },
+    { icon: "fas fa-brain", name: "RAG", color: "#FF6B6B", cat: "ai" },
   ];
 
+  const categories = [
+    { id: "all", label: "All", color: "#8b38a4" },
+    { id: "dev", label: "Development", color: "#61DAFB" },
+    { id: "design", label: "Design", color: "#F24E1E" },
+    { id: "db", label: "Database", color: "#3ECF8E" },
+    { id: "ai", label: "AI / ML", color: "#FF6B6B" },
+  ];
+
+  const [activeCat, setActiveCat] = useState("all");
   const gridRef = useReveal(0.1);
 
+  const filtered =
+    activeCat === "all" ? skillList : skillList.filter((s) => s.cat === activeCat);
+
   const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    e.currentTarget.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
-    e.currentTarget.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const rx = ((y - rect.height / 2) / (rect.height / 2)) * -8;
+    const ry = ((x - rect.width / 2) / (rect.width / 2)) * 8;
+    card.style.setProperty("--mouse-x", `${x}px`);
+    card.style.setProperty("--mouse-y", `${y}px`);
+    card.style.setProperty("--rx", `${rx}deg`);
+    card.style.setProperty("--ry", `${ry}deg`);
+  };
+
+  const handleMouseLeave = (e) => {
+    const card = e.currentTarget;
+    card.style.setProperty("--rx", "0deg");
+    card.style.setProperty("--ry", "0deg");
+  };
+
+  const handlePulse = (e) => {
+    const card = e.currentTarget;
+    card.classList.remove("pulse");
+    void card.offsetWidth;
+    card.classList.add("pulse");
   };
 
   return (
@@ -263,19 +295,46 @@ const Skills = () => {
           <div className="line"></div>
         </div>
       </RevealDiv>
+      <RevealDiv delay={100}>
+        <div className="skill-tabs">
+          {categories.map((c) => {
+            const count =
+              c.id === "all"
+                ? skillList.length
+                : skillList.filter((s) => s.cat === c.id).length;
+            return (
+              <button
+                key={c.id}
+                className={`skill-tab mono ${activeCat === c.id ? "active" : ""}`}
+                style={{ "--tab-color": c.color }}
+                onClick={() => setActiveCat(c.id)}
+              >
+                {c.label}
+                <span className="skill-tab-count">{count}</span>
+              </button>
+            );
+          })}
+        </div>
+      </RevealDiv>
       <div ref={gridRef} className="skills-grid">
-        {skills.map((s, i) => (
-          <div
-            key={i}
-            className="skill-card"
-            style={{ "--skill-color": s.color, "--i": i }}
-            onMouseMove={handleMouseMove}
-          >
-            <div className="skill-card-glow" />
-            <i className={s.icon}></i>
-            <span className="mono">{s.name}</span>
-          </div>
-        ))}
+        <div className="skills-grid-inner" key={activeCat}>
+          {filtered.map((s, i) => (
+            <div
+              key={`${s.name}-${i}`}
+              className="skill-card"
+              style={{ "--skill-color": s.color, "--i": i }}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              onClick={handlePulse}
+            >
+              <div className="skill-card-inner">
+                <div className="skill-card-glow" />
+                <i className={s.icon}></i>
+                <span className="mono">{s.name}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

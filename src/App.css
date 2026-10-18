@@ -505,13 +505,102 @@ html {
 
 .skills-grid {
   margin: 32px 0;
+  perspective: 900px;
+}
+
+.skills-grid-inner {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  perspective: 800px;
+}
+
+.skill-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 28px 0 20px;
+  padding: 6px;
+}
+
+.skill-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--gray);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
+}
+
+.skill-tab::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    120px circle at 50% 20%,
+    color-mix(in srgb, var(--tab-color) 18%, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.skill-tab-count {
+  padding: 2px 8px;
+  border-radius: 50px;
+  font-size: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.3s ease;
+}
+
+.skill-tab:hover {
+  color: var(--white);
+  border-color: color-mix(in srgb, var(--tab-color) 40%, transparent);
+}
+
+.skill-tab:hover::before,
+.skill-tab.active::before {
+  opacity: 1;
+}
+
+.skill-tab.active {
+  color: var(--white);
+  background: color-mix(in srgb, var(--tab-color) 10%, rgba(255, 255, 255, 0.03));
+  border-color: color-mix(in srgb, var(--tab-color) 50%, transparent);
+  box-shadow: 0 8px 60px -24px var(--tab-color),
+              inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.skill-tab.active .skill-tab-count {
+  background: color-mix(in srgb, var(--tab-color) 20%, transparent);
+  border-color: color-mix(in srgb, var(--tab-color) 40%, transparent);
+  color: var(--white);
 }
 
 .skill-card {
+  position: relative;
+  border-radius: 16px;
+  transform-style: preserve-3d;
+  perspective: 900px;
+  opacity: 0;
+  transform: rotateX(-40deg) translateY(30px) scale(0.85);
+  transform-origin: top center;
+}
+
+.skill-card-inner {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -520,13 +609,24 @@ html {
   gap: 12px;
   padding: 32px 20px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.02);
+  background: radial-gradient(
+      180px circle at 50% 0%,
+      rgba(255, 255, 255, 0.02),
+      rgba(10, 10, 10, 0.8)
+    ),
+    linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.01) 50%,
+      rgba(8, 8, 8, 0.85) 100%
+    );
   border: 1px solid rgba(255, 255, 255, 0.06);
   overflow: hidden;
   cursor: default;
-  opacity: 0;
-  transform: rotateX(-40deg) translateY(30px);
-  transform-origin: top center;
+  transform: translateZ(0) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  transform-style: preserve-3d;
 }
 
 .skills-grid.visible .skill-card {
@@ -537,42 +637,54 @@ html {
 @keyframes skillFlipIn {
   0% {
     opacity: 0;
-    transform: rotateX(-40deg) translateY(30px);
+    transform: rotateX(-40deg) translateY(30px) scale(0.85);
   }
   100% {
     opacity: 1;
-    transform: rotateX(0deg) translateY(0);
+    transform: rotateX(0deg) translateY(0) scale(1);
   }
+}
+
+@keyframes skillPulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--skill-color) 45%, transparent); }
+  70% { box-shadow: 0 0 0 14px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+.skill-card.pulse .skill-card-inner {
+  animation: skillPulse 0.4s ease-out;
 }
 
 .skill-card-glow {
   position: absolute;
-  inset: 0;
+  inset: -10%;
   border-radius: inherit;
   background: radial-gradient(
-    220px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    color-mix(in srgb, var(--skill-color) 14%, transparent),
-    transparent 55%
+    260px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    color-mix(in srgb, var(--skill-color) 16%, transparent),
+    transparent 58%
   );
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
+  filter: blur(1px);
+  transform: translateZ(-40px);
 }
 
 .skill-card:hover .skill-card-glow {
   opacity: 1;
 }
 
-.skill-card::after {
+.skill-card::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   padding: 1px;
   background: radial-gradient(
-    180px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    color-mix(in srgb, var(--skill-color) 50%, transparent),
-    transparent 55%
+    200px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    color-mix(in srgb, var(--skill-color) 55%, transparent),
+    transparent 60%
   );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -581,34 +693,46 @@ html {
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
+  transform: translateZ(1px);
 }
 
-.skill-card:hover::after {
+.skill-card:hover::before {
   opacity: 1;
 }
 
+.skill-card:hover .skill-card-inner {
+  box-shadow: 0 30px 120px -40px color-mix(in srgb, var(--skill-color) 35%, transparent);
+}
+
 .skill-card i {
+  position: relative;
+  z-index: 2;
   font-size: 32px;
   color: var(--skill-color);
   filter: drop-shadow(0 0 6px color-mix(in srgb, var(--skill-color) 30%, transparent));
   transition: all 0.3s ease;
+  transform: translateZ(20px);
 }
 
 .skill-card span {
+  position: relative;
+  z-index: 2;
   font-size: 12px;
   color: var(--gray);
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: all 0.3s ease;
+  transform: translateZ(20px);
 }
 
-.skill-card:hover i {
-  filter: drop-shadow(0 0 12px var(--skill-color));
-  transform: translateY(-4px) scale(1.1);
+.skill-card:hover .skill-card-inner i {
+  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--skill-color) 45%, transparent));
+  transform: translateY(-6px) scale(1.12) translateZ(30px);
 }
 
-.skill-card:hover span {
+.skill-card:hover .skill-card-inner span {
   color: var(--white);
+  transform: translateZ(30px);
 }
 
 /* ==================== ABOUT ==================== */
@@ -1141,13 +1265,7 @@ html {
     justify-content: center;
   }
 
-  .footer-inner {
-    flex-direction: column;
-    gap: 12px;
-    text-align: center;
-  }
-
-  .skills-grid {
+  .skills-grid-inner {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -1179,12 +1297,16 @@ html {
     display: none;
   }
 
-  .skills-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .skills-grid-inner {
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
 
   .skill-card {
+    border-radius: 12px;
+  }
+
+  .skill-card-inner {
     padding: 20px 12px;
     gap: 8px;
     border-radius: 12px;
@@ -1196,6 +1318,16 @@ html {
 
   .skill-card span {
     font-size: 10px;
+  }
+
+  .skill-tab {
+    padding: 7px 12px;
+    font-size: 11px;
+  }
+
+  .skill-tab-count {
+    font-size: 9px;
+    padding: 2px 6px;
   }
 
   .project-tech-row {
