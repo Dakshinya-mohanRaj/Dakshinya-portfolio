@@ -225,29 +225,35 @@ const Projects = () => {
 };
 
 const Skills = () => {
-  const row1 = [
-    { icon: "html5", name: "HTML", color: "#E34F26" },
-    { icon: "css3", name: "CSS", color: "#1572B6" },
-    { icon: "js", name: "JavaScript", color: "#F7DF1E" },
-    { icon: "react", name: "React", color: "#61DAFB" },
-    { icon: "figma", name: "Figma", color: "#F24E1E" },
+  const skills = [
+    { icon: "fab fa-html5", name: "HTML", color: "#E34F26" },
+    { icon: "fab fa-css3-alt", name: "CSS", color: "#1572B6" },
+    { icon: "fab fa-js", name: "JavaScript", color: "#F7DF1E" },
+    { icon: "fas fa-code", name: "TypeScript", color: "#3178C6" },
+    { icon: "fab fa-react", name: "React", color: "#61DAFB" },
+    { icon: "fab fa-nextjs", name: "Next.js", color: "#FFFFFF" },
+    { icon: "fab fa-node-js", name: "Node.js", color: "#5FA04E" },
+    { icon: "fab fa-python", name: "Python", color: "#3776AB" },
+    { icon: "fas fa-gauge-high", name: "FastAPI", color: "#009688" },
+    { icon: "fas fa-database", name: "PostgreSQL", color: "#4169E1" },
+    { icon: "fas fa-bolt", name: "Neon", color: "#00E599" },
+    { icon: "fas fa-key", name: "JWT Auth", color: "#D63AFF" },
+    { icon: "fas fa-brain", name: "RAG", color: "#FF6B6B" },
+    { icon: "fas fa-wind", name: "Tailwind", color: "#06B6D4" },
+    { icon: "fas fa-code", name: "Firebase", color: "#FFCA28" },
+    { icon: "fas fa-cubes", name: "Supabase", color: "#3ECF8E" },
+    { icon: "fab fa-git-alt", name: "Git", color: "#F05032" },
+    { icon: "fab fa-java", name: "Java", color: "#007396" },
+    { icon: "fab fa-figma", name: "Figma", color: "#F24E1E" },
   ];
 
-  const row2 = [
-    { icon: "git-alt", name: "Git", color: "#F05032" },
-    { icon: "code", name: "Firebase", color: "#FFCA28" },
-    { icon: "database", name: "Supabase", color: "#3ECF8E" },
-    { icon: "java", name: "Java", color: "#007396" },
-    { icon: "html5", name: "HTML", color: "#E34F26" },
-    { icon: "css3", name: "CSS", color: "#1572B6" },
-  ];
+  const gridRef = useReveal(0.1);
 
-  const SkillTile = ({ icon, name, color }) => (
-    <div className="skill-tile" style={{ '--skill-color': color }}>
-      <i className={`fab fa-${icon}`}></i>
-      <span className="mono">{name}</span>
-    </div>
-  );
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
+    e.currentTarget.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
+  };
 
   return (
     <section id="skills" className="skills">
@@ -257,21 +263,19 @@ const Skills = () => {
           <div className="line"></div>
         </div>
       </RevealDiv>
-      <div className="marquee-wrap">
-        <div className="marquee-row marquee-lr">
-          <div className="marquee-track">
-            {[...row1, ...row1, ...row1].map((s, i) => (
-              <SkillTile key={i} {...s} />
-            ))}
+      <div ref={gridRef} className="skills-grid">
+        {skills.map((s, i) => (
+          <div
+            key={i}
+            className="skill-card"
+            style={{ "--skill-color": s.color, "--i": i }}
+            onMouseMove={handleMouseMove}
+          >
+            <div className="skill-card-glow" />
+            <i className={s.icon}></i>
+            <span className="mono">{s.name}</span>
           </div>
-        </div>
-        <div className="marquee-row marquee-rl">
-          <div className="marquee-track">
-            {[...row2, ...row2, ...row2].map((s, i) => (
-              <SkillTile key={i} {...s} />
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );
