@@ -167,18 +167,18 @@ const Projects = () => {
       live: "https://nail-glam-e-commerce-website.vercel.app/",
     },
     {
-      img: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=600&auto=format&fit=crop",
-      tech: ["React", "Express", "MongoDB", "JWT Auth"],
+      img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop",
+      tech: ["Next.js", "React", "Tailwind", "PostgreSQL", "Neon", "MongoDB", "JWT Auth"],
       title: "Staff Task Scheduling Portal",
-      desc: "Role-based staff portal for assigning, tracking and managing team tasks and schedules",
+      desc: "College staff portal for assigning, tracking and monitoring team tasks and schedules",
       live: "https://staff-task-scheduling-portal.vercel.app/",
     },
     {
-      img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop",
-      tech: ["React", "Tailwind", "Express", "Binance API"],
-      title: "CrypTrack",
-      desc: "Real-time cryptocurrency tracker with live market data",
-      live: "#",
+      img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=600&auto=format&fit=crop",
+      tech: ["Python", "FastAPI", "RAG", "Vector Search", "OpenAI"],
+      title: "DocuBot — AI Document Assistant",
+      desc: "RAG-powered assistant for chatting with your PDFs, DOCX and text using document-grounded vector search",
+      live: "https://docubot-5fy3.onrender.com",
     },
   ];
 
